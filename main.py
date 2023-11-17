@@ -2,11 +2,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math as m
 import xml.etree.ElementTree as et
+import os.path
 
 
 def func(x):
-    function = ((6 * x - 2)**2) * m.sin(12 * x - 4)
-    return function
+    return ((6 * x - 2)**2) * m.sin(12 * x - 4)
 
 
 xmin = 0
@@ -21,6 +21,9 @@ ylist = []
 for i in range(len(xlist)):
     y = func(xlist[i])
     ylist.append(y)
+
+if(os.path.exists('results') == False):
+    os.mkdir('results')
 
 plt.plot(xlist, ylist)
 plt.savefig('plot_1.png', dpi=50, bbox_inches='tight')
@@ -38,4 +41,4 @@ for i in range(len(ylist)):
 
 ffile = et.ElementTree(data)
 et.indent(ffile, space="\t", level=0)
-ffile.write("results_1.xml", encoding="utf-8", xml_declaration=True)
+ffile.write(r"C:\Users\79671\PycharmProjects\model\results\results_1.xml", encoding="utf-8", xml_declaration=True)
