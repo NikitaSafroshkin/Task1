@@ -5,6 +5,7 @@ from scipy import special, constants
 from numpy import arange, abs, sum
 from matplotlib import pyplot as plt
 import csv
+import os.path
 
 # читаем XML файл
 data = requests.get('https://jenyay.net/uploads/Student/Modelling/task_02.xml').text
@@ -45,11 +46,16 @@ rcs_arange = (wavelength_arange ** 2) / numpy.pi * (abs(sum([((-1) ** n) * (n+0.
 
 counter = 0
 
+if os.path.exists('result') == False:
+    os.mkdir('result')
+
+    flist1 = flist.tolist()
+
 with open('result/data.csv', 'w') as file:
     writer = csv.writer(file)
     for x, y, z in zip(f_arange, wavelength_arange, rcs_arange):
         counter += 1
-        writer.writerow([counter, x, 'Гц', y, 'м', z,'м^2'])
+        writer.writerow([counter, x, y, z])
 
 # Строим график
 plt.plot(f_arange, rcs_arange)
