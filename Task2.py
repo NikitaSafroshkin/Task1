@@ -58,6 +58,6 @@ with open('result/data.csv', 'w') as file:
 
 # Строим график
 plt.plot(f_arange, rcs_arange)
+plt.xlabel("Частота, Гц")
+plt.ylabel("ЭПР, м^2")
 plt.show()
-
-
