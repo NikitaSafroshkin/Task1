@@ -49,7 +49,6 @@ counter = 0
 if os.path.exists('result') == False:
     os.mkdir('result')
 
-    flist1 = flist.tolist()
 
 with open('result/data.csv', 'w') as file:
     writer = csv.writer(file)
@@ -60,3 +59,5 @@ with open('result/data.csv', 'w') as file:
 # Строим график
 plt.plot(f_arange, rcs_arange)
 plt.show()
+
+
